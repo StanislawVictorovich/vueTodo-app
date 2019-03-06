@@ -4,9 +4,8 @@
       v-for="(item, index) in list"
       :key="item.text"
       @click="checkTask(index)"
-      :class="{ 'checked': isChecked(index) }"
-    >
-      {{ item.text }}
+      :class="{ 'checked': isChecked(index) }">
+        {{ item.text }}
       <span class="close" @click="deleteTask(index)">❌</span>
     </li>
   </div>
@@ -20,7 +19,7 @@ export default {
       this.$store.dispatch("checkToDo", indexInList);
     },
     deleteTask(indexInList) {
-      console.log(indexInList);
+      this.$store.dispatch("deleteToDo", indexInList);
     }
   },
   computed: {
