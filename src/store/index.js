@@ -47,7 +47,11 @@ export default new Vuex.Store({
   },
   mutations: {
     ADD_TODO(state, todo) {
+      !state.todos[state.currentPage] && state.todos.push([]); // if no page exists yet => create new empty page 
       state.todos[state.currentPage].push(todo);
+    },
+    DELETE_TODO(state, indexInList) {
+      state.todos[state.currentPage].splice(indexInList, 1);
     },
     CHECK_TODO(state, indexInList) {
       state.todos[state.currentPage][indexInList].checked = !state.todos[state.currentPage][indexInList].checked;
@@ -57,11 +61,20 @@ export default new Vuex.Store({
     },
     BACKWARD_PAGE(state) {
       state.currentPage--;
+    },
+    NEW_PAGE(state) {
+      state.currentPage = state.todos.length;
     }
   },
   actions: {
-    addTodo({ commit }, todo) {
+    addToDo({ commit }, todo) {
       commit('ADD_TODO', todo);
+    },
+    deleteToDo({ commit }, indexInList) {
+      commit('DELETE_TODO', indexInList);
+    },
+    checkToDo({ commit }, indexInList) {
+      commit('CHECK_TODO', indexInList);
     },
     forwardPage({ commit }) {
       commit('FORWARD_PAGE');
@@ -69,8 +82,8 @@ export default new Vuex.Store({
     backwardPage({ commit }) {
       commit('BACKWARD_PAGE');
     },
-    checkToDo({ commit }, indexInList) {
-      commit('CHECK_TODO', indexInList);
+    newPage({ commit }) {
+      commit('NEW_PAGE');
     }
   },
   strict: process.env.NODE_ENV !== 'production'

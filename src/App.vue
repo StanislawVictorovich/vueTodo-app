@@ -29,13 +29,13 @@ export default {
   },
   methods: {
     add() {
-      this.$store.dispatch("addTodo", { text: this.message, checked: false });
+      this.$store.dispatch("addToDo", { text: this.message, checked: false });
     }
   },
   computed: {
     todos: {
       get() {
-        return this.$store.state.todos;
+        return this.$store.getters.todos;
       }
     },
     lastPage: {
