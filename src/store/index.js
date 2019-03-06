@@ -21,13 +21,26 @@ export default new Vuex.Store({
           text: 'some text 3 page 2',
           checked: true
         }
+      ],
+      [
+        {
+          text: 'some text dfdsf on page 3',
+          checked: false
+        },
+        {
+          text: 'some text adasadasd on page 3',
+          checked: false
+        },
+        {
+          text: 'some texta on page 3',
+          checked: false
+        }
       ]
     ]
   },
   getters: {
-    todos(state) {
-      return state.todos;
-    }
+    todos: state => state.todos,
+    lastPage: state => state.todos.length - 1
   },
   strict: process.env.NODE_ENV !== 'production'
 })

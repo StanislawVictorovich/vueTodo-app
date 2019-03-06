@@ -3,25 +3,49 @@
   <span 
     id="new-page" 
     class="navigation-buttons"
+    @click="newPage"
     >➕
   </span>
 
   <span
+    v-if="currentPage < lastPage"
     id="forward-page" 
     class="navigation-buttons"
+    @click="forwardPage"
     >🔺
   </span>
 
   <span 
+    v-if="currentPage > 0"
     id="backward-page" 
     class="navigation-buttons"
+    @click="backwardPage"
     >🔺
   </span>
 </div>
 </template>
 <script>
 export default {
-  name: 'Navigation'
+  name: 'Navigation',
+  props: ['currentPage'],
+  methods: {
+    backwardPage() {
+      this.$emit("backwardPage");
+    },
+    forwardPage() {
+      this.$emit("forwardPage");
+    },
+    newPage() {
+      this.$emit("newPage");console.log(this.currentPage, this.lastPage);
+    }
+  },
+  computed: {
+    lastPage: {
+      get() {
+        return this.$store.getters.lastPage;
+      }
+    }
+  }
 }
 </script>
 <style>
