@@ -30,13 +30,13 @@ export default {
   props: ['currentPage'],
   methods: {
     backwardPage() {
-      this.$emit("backwardPage");
+      this.$store.dispatch('backwardPage');
     },
     forwardPage() {
-      this.$emit("forwardPage");
+      this.$store.dispatch('forwardPage');
     },
     newPage() {
-      this.$emit("newPage");console.log(this.currentPage, this.lastPage);
+      this.$store.dispatch("newPage");
     }
   },
   computed: {
