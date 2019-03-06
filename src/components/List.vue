@@ -1,21 +1,23 @@
 <template>
-<div>
-  <li v-for="(item, index) in list" 
-  :key="item.text" 
-  @click="checkTask(index)"
-  :class="{ 'checked': isChecked(index) }">
+  <div>
+    <li
+      v-for="(item, index) in list"
+      :key="item.text"
+      @click="checkTask(index)"
+      :class="{ 'checked': isChecked(index) }"
+    >
       {{ item.text }}
-    <span class="close" @click="deleteTask(index)">❌</span>
-  </li>
-</div>
+      <span class="close" @click="deleteTask(index)">❌</span>
+    </li>
+  </div>
 </template>
 <script>
 export default {
-  name: 'List',
-  props: ['list'],
+  name: "List",
+  props: ["list"],
   methods: {
     checkTask(indexInList) {
-      this.$store.dispatch('checkToDo', indexInList);
+      this.$store.dispatch("checkToDo", indexInList);
     },
     deleteTask(indexInList) {
       console.log(indexInList);
@@ -26,7 +28,7 @@ export default {
       return indexInList => this.$store.getters.isChecked(indexInList);
     }
   }
-}
+};
 </script>
 <style>
 li {
@@ -50,7 +52,7 @@ li:nth-child(odd) {
 li:hover {
   background: #ddd;
 }
-  
+
 li.checked {
   background: lightgray;
   color: #fff;
@@ -58,7 +60,7 @@ li.checked {
 }
 
 li.checked::before {
-  content: '';
+  content: "";
   position: absolute;
   border-color: #fff;
   border-style: solid;

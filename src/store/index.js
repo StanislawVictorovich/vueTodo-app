@@ -63,13 +63,13 @@ export default new Vuex.Store({
     addTodo({ commit }, todo) {
       commit('ADD_TODO', todo);
     },
-    forwardPage( { commit } ) {
+    forwardPage({ commit }) {
       commit('FORWARD_PAGE');
     },
-    backwardPage( { commit } ) {
+    backwardPage({ commit }) {
       commit('BACKWARD_PAGE');
     },
-    checkToDo( { commit }, indexInList ) {
+    checkToDo({ commit }, indexInList) {
       commit('CHECK_TODO', indexInList);
     }
   },

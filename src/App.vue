@@ -3,26 +3,25 @@
     <div id="operation-block" class="header">
       <h4 style="margin:5px" id="Date">Page {{ currentPage + 1 }}</h4>
       <input type="text" id="input" placeholder="Type, please..." v-model="message">
-      <span id="add-button" @click="add">Add</span> 
-    </div> 
-    <ul class="work-block" id="current-page"> 
+      <span id="add-button" @click="add">Add</span>
+    </div>
+    <ul class="work-block" id="current-page">
       <list :list="todos[currentPage]"></list>
-    </ul> 
-    <navigation :currentPage="currentPage">
-    </navigation>
+    </ul>
+    <navigation :currentPage="currentPage"></navigation>
   </div>
 </template>
 
 <script>
-import List from './components/List';
-import Navigation from './components/Navigation';
+import List from "./components/List";
+import Navigation from "./components/Navigation";
 
 export default {
-  name: 'app',
+  name: "app",
   data() {
     return {
-      message: ''
-    }
+      message: ""
+    };
   },
   components: {
     List,
@@ -30,7 +29,7 @@ export default {
   },
   methods: {
     add() {
-      this.$store.dispatch('addTodo', { text: this.message, checked: false });
+      this.$store.dispatch("addTodo", { text: this.message, checked: false });
     }
   },
   computed: {
@@ -50,7 +49,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 
 <style>
@@ -58,10 +57,11 @@ body {
   margin: 0;
   min-width: 250px;
 }
-  
+
 * {
   box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 h4 {
@@ -72,7 +72,7 @@ ul {
   margin: 0;
   padding: 0;
 }
-  
+
 .header {
   background-color: #6f36f4;
   padding: 30px 40px;
@@ -85,7 +85,7 @@ ul {
   display: table;
   clear: both;
 }
-  
+
 #input {
   margin: 0;
   border: none;
@@ -109,7 +109,7 @@ ul {
   transition: 0.5s;
   border-radius: 0;
 }
-  
+
 #add-button:hover {
   background-color: #555555;
   color: white;

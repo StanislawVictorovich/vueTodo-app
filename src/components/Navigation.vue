@@ -1,39 +1,37 @@
 <template>
-<div>
-  <span 
-    id="new-page" 
-    class="navigation-buttons"
-    @click="newPage"
-    >➕
-  </span>
-
-  <span
-    v-if="currentPage < lastPage"
-    id="forward-page" 
-    class="navigation-buttons"
-    @click="forwardPage"
-    >🔺
-  </span>
-
-  <span 
-    v-if="currentPage > 0"
-    id="backward-page" 
-    class="navigation-buttons"
-    @click="backwardPage"
-    >🔺
-  </span>
-</div>
+  <div>
+    <span 
+      id="new-page" 
+      class="navigation-buttons" 
+      @click="newPage"
+      >➕
+    </span>
+    <span
+      v-if="currentPage < lastPage"
+      id="forward-page"
+      class="navigation-buttons"
+      @click="forwardPage"
+      >🔺
+    </span>
+    <span
+      v-if="currentPage > 0"
+      id="backward-page"
+      class="navigation-buttons"
+      @click="backwardPage"
+      >🔺
+    </span>
+  </div>
 </template>
 <script>
 export default {
-  name: 'Navigation',
-  props: ['currentPage'],
+  name: "Navigation",
+  props: ["currentPage"],
   methods: {
     backwardPage() {
-      this.$store.dispatch('backwardPage');
+      this.$store.dispatch("backwardPage");
     },
     forwardPage() {
-      this.$store.dispatch('forwardPage');
+      this.$store.dispatch("forwardPage");
     },
     newPage() {
       this.$store.dispatch("newPage");
@@ -46,7 +44,7 @@ export default {
       }
     }
   }
-}
+};
 </script>
 <style>
 #new-page {
@@ -67,13 +65,13 @@ export default {
   position: fixed;
   bottom: 0;
   padding: 12px;
-  transition: 0.4s;  
+  transition: 0.4s;
 }
 
 .navigation-buttons:hover {
   cursor: pointer;
   background-color: rgb(90, 46, 172);
   color: white;
-  transition: 0.4s;  
+  transition: 0.4s;
 }
 </style>
