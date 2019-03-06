@@ -1,28 +1,111 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="operation-block" class="header">
+      <h4 style="margin:5px" id="Date">Page {{ currentPage }}</h4>
+      <input type="text" id="input" placeholder="Type, please...">
+      <span id="add-button" @click="add">Add</span> 
+    </div> 
+    <ul class="work-block" id="current-page"> 
+      <list :list="todos[currentPage]"></list>
+    </ul> 
+    <navigation>
+    </navigation>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import List from './components/List';
+import Navigation from './components/Navigation';
 
 export default {
   name: 'app',
+  data() {
+    return {
+      currentPage: 0
+    }
+  },
   components: {
-    HelloWorld
+    List,
+    Navigation
+  },
+  methods: {
+    add() {
+      console.log(this);
+    }
+  },
+  computed: {
+    todos: {
+      get() {
+        return this.$store.state.todos;
+      }
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
+  margin: 0;
+  min-width: 250px;
+}
+  
+* {
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+h4 {
+  margin: 5px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+  
+.header {
+  background-color: #6f36f4;
+  padding: 30px 40px;
+  color: white;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  
+#input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+#add-button {
+  border: none;
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 0;
+}
+  
+#add-button:hover {
+  background-color: #555555;
+  color: white;
+}
+
+#add-button:active {
+  background-color: rgb(49, 48, 48);
 }
 </style>
