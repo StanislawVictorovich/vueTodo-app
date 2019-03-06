@@ -1,0 +1,55 @@
+<template>
+<div>
+  <span 
+    id="new-page" 
+    class="navigation-buttons"
+    >➕
+  </span>
+
+  <span
+    id="forward-page" 
+    class="navigation-buttons"
+    >🔺
+  </span>
+
+  <span 
+    id="backward-page" 
+    class="navigation-buttons"
+    >🔺
+  </span>
+</div>
+</template>
+<script>
+export default {
+  name: 'Navigation'
+}
+</script>
+<style>
+#new-page {
+  right: 0;
+}
+
+#forward-page {
+  transform: rotate(90deg);
+  right: 46px;
+}
+
+#backward-page {
+  transform: rotate(270deg);
+  right: 86px;
+}
+
+.navigation-buttons {
+  position: fixed;
+  bottom: 0;
+  padding: 12px;
+  transition: 0.4s;  
+}
+
+.navigation-buttons:hover {
+  cursor: pointer;
+  background-color: rgb(90, 46, 172);
+  color: white;
+  transition: 0.4s;  
+}
+</style>
