@@ -1,6 +1,9 @@
 <template>
 <div>
-  <li v-for="(item, index) in list" :key="item.text">
+  <li v-for="(item, index) in list" 
+  :key="item.text" 
+  @click="checkTask(index)"
+  :class="{ 'checked': isChecked(index) }">
       {{ item.text }}
     <span class="close" @click="deleteTask(index)">❌</span>
   </li>
@@ -11,8 +14,16 @@ export default {
   name: 'List',
   props: ['list'],
   methods: {
-    deleteTask(index) {
-      console.log(index);
+    checkTask(indexInList) {
+      this.$store.dispatch('checkToDo', indexInList);
+    },
+    deleteTask(indexInList) {
+      console.log(indexInList);
+    }
+  },
+  computed: {
+    isChecked() {
+      return indexInList => this.$store.getters.isChecked(indexInList);
     }
   }
 }
