@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    currentPage: 0,
     todos: [
       [
         {
@@ -40,7 +41,37 @@ export default new Vuex.Store({
   },
   getters: {
     todos: state => state.todos,
-    lastPage: state => state.todos.length - 1
+    lastPage: state => state.todos.length - 1,
+    currentPage: state => state.currentPage,
+    isChecked: state => indexInList => state.todos[state.currentPage][indexInList].checked
+  },
+  mutations: {
+    ADD_TODO(state, todo) {
+      state.todos[state.currentPage].push(todo);
+    },
+    CHECK_TODO(state, indexInList) {
+      state.todos[state.currentPage][indexInList].checked = !state.todos[state.currentPage][indexInList].checked;
+    },
+    FORWARD_PAGE(state) {
+      state.currentPage++;
+    },
+    BACKWARD_PAGE(state) {
+      state.currentPage--;
+    }
+  },
+  actions: {
+    addTodo({ commit }, todo) {
+      commit('ADD_TODO', todo);
+    },
+    forwardPage( { commit } ) {
+      commit('FORWARD_PAGE');
+    },
+    backwardPage( { commit } ) {
+      commit('BACKWARD_PAGE');
+    },
+    checkToDo( { commit }, indexInList ) {
+      commit('CHECK_TODO', indexInList);
+    }
   },
   strict: process.env.NODE_ENV !== 'production'
 })
