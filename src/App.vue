@@ -1,14 +1,18 @@
 <template>
   <div id="app">
     <div id="operation-block" class="header">
-      <h4 style="margin:5px" id="Date">Page {{ currentPage }}</h4>
+      <h4 style="margin:5px" id="Date">Page {{ currentPage + 1 }}</h4>
       <input type="text" id="input" placeholder="Type, please...">
       <span id="add-button" @click="add">Add</span> 
     </div> 
     <ul class="work-block" id="current-page"> 
       <list :list="todos[currentPage]"></list>
     </ul> 
-    <navigation>
+    <navigation 
+      @backwardPage="backwardPage"
+      @forwardPage="forwardPage"
+      @newPage="newPage"
+      :currentPage="currentPage">
     </navigation>
   </div>
 </template>
@@ -31,12 +35,25 @@ export default {
   methods: {
     add() {
       console.log(this);
+    },
+    backwardPage() { 
+      this.currentPage--;
+    },
+    forwardPage() {
+      this.currentPage++;
+    },
+    newPage() {
     }
   },
   computed: {
     todos: {
       get() {
         return this.$store.state.todos;
+      }
+    },
+    lastPage: {
+      get() {
+        return this.$store.getters.lastPage;
       }
     }
   }
