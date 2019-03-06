@@ -6,6 +6,12 @@
 
 # Simple Multipaged ToDo Application on Vue 2.6.7
 
+## Screenshots
+
+<div align="center"> 
+  <img src="https://i.ibb.co/wLznXrC/image.png">
+</div>
+
 ## Project setup
 ```
 npm install
