@@ -6,7 +6,7 @@
       @click="checkTask(index)"
       :class="{ 'checked': isChecked(index) }">
         {{ item.text }}
-      <span class="close" @click="deleteTask(index)">❌</span>
+      <span class="close" @click="deleteTask(index, $event)">❌</span>
     </li>
   </div>
 </template>
@@ -18,8 +18,9 @@ export default {
     checkTask(indexInList) {
       this.$store.dispatch("checkToDo", indexInList);
     },
-    deleteTask(indexInList) {
+    deleteTask(indexInList, event) {
       this.$store.dispatch("deleteToDo", indexInList);
+      event.stopPropagation();
     }
   },
   computed: {
