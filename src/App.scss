@@ -40,26 +40,29 @@ ul {
   float: left;
   font-size: 16px;
 }
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
 
 #add-button {
   border: none;
   padding: 10px;
   width: 25%;
-  background: #d9d9d9;
-  color: #555;
+  background: $add-button-background;
+  color: $add-button;
   float: left;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.5s;
   border-radius: 0;
+  @extend %transitioned;
 }
 
 #add-button:hover {
-  background-color: #555555;
-  color: white;
+  background-color: $add-button-hover-background;
+  color: $button-hover;
 }
 
 #add-button:active {
-  background-color: rgb(49, 48, 48);
+  background-color: $add-button-active-background;
 }
