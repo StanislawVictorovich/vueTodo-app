@@ -1,0 +1,19 @@
+<div>
+  <span 
+    class="new-page navigation-buttons" 
+    @click="newPage"
+    >➕
+  </span>
+  <span
+    v-if="currentPage < lastPage"
+    class="forward-page navigation-buttons"
+    @click="forwardPage"
+    >🔺
+  </span>
+  <span
+    v-if="currentPage > 0"
+    class="backward-page navigation-buttons"
+    @click="backwardPage"
+    >🔺
+  </span>
+</div>

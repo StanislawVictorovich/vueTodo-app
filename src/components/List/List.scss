@@ -1,0 +1,59 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
+li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: $li-background;
+  font-size: 18px;
+  transition: 0.4s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @extend %transitioned;
+}
+
+li:nth-child(odd) {
+  background: $li-next-background
+}
+
+li:hover {
+  background: $li-hover-background;
+}
+
+li.checked {
+  background: $li-check-background;
+  color: $li-check;
+  text-decoration: line-through;
+}
+
+li.checked::before {
+  content: "";
+  position: absolute;
+  border-color: $li-check;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  height: 15px;
+  width: 7px;
+  @include transformation(45deg);
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 11px 11px 11px 10px;
+  @extend %transitioned;
+}
+
+.close:hover {
+  background-color: $background;
+  color: $button-hover;
+  @extend %transitioned;
+}

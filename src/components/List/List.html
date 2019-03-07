@@ -1,0 +1,10 @@
+<div>
+  <li
+    v-for="(item, index) in list"
+    :key="item.text"
+    @click="checkTask(index)"
+    :class="{ 'checked': isChecked(index) }">
+      {{ item.text }}
+    <span class="close" @click="deleteTask(index, $event)">❌</span>
+  </li>
+</div>

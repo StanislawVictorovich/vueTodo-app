@@ -1,0 +1,31 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
+.new-page {
+  right: 0;
+}
+
+.forward-page {
+  @include transformation(90deg);
+  right: 46px;
+}
+
+.backward-page {
+  @include transformation(270deg);
+  right: 86px;
+}
+
+.navigation-buttons {
+  position: fixed;
+  bottom: 0;
+  padding: 12px;
+  @extend %transitioned;
+}
+
+.navigation-buttons:hover {
+  cursor: pointer;
+  background-color: $background;
+  color: $button-hover;
+  @extend %transitioned;
+}
