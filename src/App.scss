@@ -1,3 +1,7 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+@import 'src/styles/variables';
+
 body {
   margin: 0;
   min-width: 250px;
@@ -5,8 +9,7 @@ body {
 
 * {
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: $fonts;
 }
 
 h4 {
@@ -19,9 +22,9 @@ ul {
 }
 
 .header {
-  background-color: #6f36f4;
+  background-color: $header-background;
   padding: 30px 40px;
-  color: white;
+  color: $header;
   text-align: center;
 }
 
@@ -40,9 +43,6 @@ ul {
   float: left;
   font-size: 16px;
 }
-@import 'src/styles/colors';
-@import 'src/styles/mixins';
-@import 'src/styles/variables';
 
 #add-button {
   border: none;
