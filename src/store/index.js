@@ -44,8 +44,7 @@ export default new Vuex.Store({
   getters: {
     todos: state => state.todos,
     lastPage: state => state.todos.length - 1,
-    currentPage: state => state.currentPage,
-    isChecked: state => indexInList => state.todos[state.currentPage][indexInList].checked
+    currentPage: state => state.currentPage
   },
   mutations: {
     ADD_TODO(state, todo) {
