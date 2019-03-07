@@ -1,0 +1,11 @@
+<div id="app">
+  <div id="operation-block" class="header">
+    <h4 style="margin:5px" id="Date">Page {{ currentPage + 1 }}</h4>
+    <input type="text" id="input" placeholder="Type, please..." v-model="message">
+    <span id="add-button" @click="add">Add</span>
+  </div>
+  <ul class="work-block" id="current-page">
+    <list :list="todos[currentPage]"></list>
+  </ul>
+  <navigation :currentPage="currentPage"></navigation>
+</div>
