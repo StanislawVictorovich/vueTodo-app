@@ -49,7 +49,7 @@ export default new Vuex.Store({
   mutations: {
     ADD_TODO(state, todo) {
       if (!state.todos[state.currentPage]) {
-        state.todos.push([]); // if no page exists yet => create new empty page 
+        state.todos.push([]); // if no page exists yet => create new empty page for pushing new element
       }
       state.todos[state.currentPage].push(todo);
     },
