@@ -1,19 +1,9 @@
-import { mapGetters, mapActions } from 'vuex'
+import Item from '../Item/Item.vue'
 
 export default {
-  name: "List",
-  props: ["list"],
-  methods: {
-    ...mapActions(['checkToDo', 'deleteToDo']),
-    checkTask(indexInList) {
-      this.checkToDo(indexInList);
-    },
-    deleteTask(indexInList, event) {
-      this.deleteToDo(indexInList);
-      event.stopPropagation();
-    }
-  },
-  computed: {
-    ...mapGetters(['isChecked'])
+  name: 'List',
+  props: ['list'],
+  components: {
+    Item
   }
 }
