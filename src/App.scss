@@ -2,14 +2,14 @@
 @import 'src/styles/mixins';
 @import 'src/styles/variables';
 
-body {
-  margin: 0;
-  min-width: 250px;
-}
-
 * {
   box-sizing: border-box;
   font-family: $fonts;
+}
+
+body {
+  margin: 0;
+  min-width: 250px;
 }
 
 h4 {
@@ -26,12 +26,11 @@ ul {
   padding: 30px 40px;
   color: $header;
   text-align: center;
-}
-
-.header:after {
-  content: "";
-  display: table;
-  clear: both;
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 }
 
 .input {
@@ -56,13 +55,11 @@ ul {
   cursor: pointer;
   border-radius: 0;
   @extend %transitioned;
-}
-
-.add-button:hover {
-  background-color: $add-button-hover-background;
-  color: $button-hover;
-}
-
-.add-button:active {
-  background-color: $add-button-active-background;
+    &:hover {
+      background-color: $add-button-hover-background;
+      color: $button-hover;
+    }
+    &:active {
+      background-color: $add-button-active-background;
+    }
 }

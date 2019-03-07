@@ -21,11 +21,10 @@
   bottom: 0;
   padding: 12px;
   @extend %transitioned;
-}
-
-.navigation-buttons:hover {
-  cursor: pointer;
-  background-color: $background;
-  color: $button-hover;
-  @extend %transitioned;
+    &:hover {
+      cursor: pointer;
+      background-color: $background;
+      color: $button-hover;
+      @extend %transitioned;      
+    }
 }
