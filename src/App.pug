@@ -1,0 +1,8 @@
+.app
+  .operation-block.header
+    h4(style='margin:5px') Page {{ displayPage }}
+    input.input(type='text', placeholder='Type, please...', v-model='message')
+    span.add-button(@click='add') Add
+  ul.work-block.current-page
+    list(:list='todosOfCurrentPage')
+  navigation

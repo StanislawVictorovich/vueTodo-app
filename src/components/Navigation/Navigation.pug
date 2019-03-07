@@ -1,0 +1,7 @@
+div
+  span.new-page.navigation-buttons(@click='newPage')
+    | ➕
+  span.forward-page.navigation-buttons(v-if='currentPage < lastPage', @click='forwardPage')
+    | 🔺
+  span.backward-page.navigation-buttons(v-if='currentPage > 0', @click='backwardPage')
+    | 🔺
