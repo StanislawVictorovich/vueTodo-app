@@ -22,14 +22,14 @@ export default new Vuex.Store({
       axios.get('https://jsonplaceholder.typicode.com/todos/')
         .then(response => {
           response.data.map(item => { // convertation data callback function
-            state.todos[pageCounter].push( { text: item.title, checked: item.completed } );
+            state.todos[pageCounter].push({ text: item.title, checked: item.completed });
             if (item.userId > pageCounter) {
               state.todos.push([]);
               pageCounter += 1;
             }
           })
         })
-        .catch(e => console.log(e));
+        .catch(e => console.warn(e));
     },
     ADD_TODO(state, todo) {
       if (!state.todos[state.currentPage]) {
