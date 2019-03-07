@@ -34,7 +34,7 @@ ul {
   clear: both;
 }
 
-#input {
+.input {
   margin: 0;
   border: none;
   border-radius: 0;
@@ -44,7 +44,7 @@ ul {
   font-size: 16px;
 }
 
-#add-button {
+.add-button {
   border: none;
   padding: 10px;
   width: 25%;
@@ -58,11 +58,11 @@ ul {
   @extend %transitioned;
 }
 
-#add-button:hover {
+.add-button:hover {
   background-color: $add-button-hover-background;
   color: $button-hover;
 }
 
-#add-button:active {
+.add-button:active {
   background-color: $add-button-active-background;
 }

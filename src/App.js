@@ -1,5 +1,5 @@
-import List from "./components/List/List.vue";
-import Navigation from "./components/Navigation/Navigation.vue";
+import List from './components/List/List.vue';
+import Navigation from './components/Navigation/Navigation.vue';
 
 export default {
   name: "app",
@@ -23,6 +23,11 @@ export default {
         return this.$store.getters.todos;
       }
     },
+    todosOfCurrentPage: {
+      get() {
+        return this.$store.getters.todos[this.$store.getters.currentPage];
+      }
+    },
     lastPage: {
       get() {
         return this.$store.getters.lastPage;
@@ -31,6 +36,11 @@ export default {
     currentPage: {
       get() {
         return this.$store.getters.currentPage;
+      }
+    },
+    displayPage: {
+      get() {
+        return this.$store.getters.currentPage + 1;
       }
     }
   }

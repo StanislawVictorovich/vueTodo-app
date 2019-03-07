@@ -2,16 +2,16 @@
 @import 'src/styles/mixins';
 @import 'src/styles/variables';
 
-#new-page {
+.new-page {
   right: 0;
 }
 
-#forward-page {
+.forward-page {
   @include transformation(90deg);
   right: 46px;
 }
 
-#backward-page {
+.backward-page {
   @include transformation(270deg);
   right: 86px;
 }
