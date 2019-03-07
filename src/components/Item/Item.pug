@@ -1,0 +1,3 @@
+li(:key='element.text', @click='checkTask(index)', :class="{ 'checked': element.checked }")
+  | {{ element.text }}
+  span.close(@click='deleteTask(index, $event)') ❌
