@@ -1,22 +1,12 @@
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: "Navigation",
   props: ["currentPage"],
   methods: {
-    backwardPage() {
-      this.$store.dispatch("backwardPage");
-    },
-    forwardPage() {
-      this.$store.dispatch("forwardPage");
-    },
-    newPage() {
-      this.$store.dispatch("newPage");
-    }
+    ...mapActions(['backwardPage', 'forwardPage', 'newPage'])
   },
   computed: {
-    lastPage: {
-      get() {
-        return this.$store.getters.lastPage;
-      }
-    }
+    ...mapGetters(['lastPage'])
   }
-};
+}

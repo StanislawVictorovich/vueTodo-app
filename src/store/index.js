@@ -4,40 +4,42 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    currentPage: 0,
-    todos: [
-      [
-        {
-          text: 'some text 1',
-          checked: false
-        },
-        {
-          text: 'some text 2',
-          checked: true
-        }
-      ],
-      [
-        {
-          text: 'some text 3 page 2',
-          checked: true
-        }
-      ],
-      [
-        {
-          text: 'some text dfdsf on page 3',
-          checked: false
-        },
-        {
-          text: 'some text adasadasd on page 3',
-          checked: false
-        },
-        {
-          text: 'some texta on page 3',
-          checked: false
-        }
+  state() {
+    return {
+      currentPage: 0,
+      todos: [
+        [
+          {
+            text: 'some text 1',
+            checked: false
+          },
+          {
+            text: 'some text 2',
+            checked: true
+          }
+        ],
+        [
+          {
+            text: 'some text 3 page 2',
+            checked: true
+          }
+        ],
+        [
+          {
+            text: 'some text dfdsf on page 3',
+            checked: false
+          },
+          {
+            text: 'some text adasadasd on page 3',
+            checked: false
+          },
+          {
+            text: 'some texta on page 3',
+            checked: false
+          }
+        ]
       ]
-    ]
+    }
   },
   getters: {
     todos: state => state.todos,
@@ -47,7 +49,9 @@ export default new Vuex.Store({
   },
   mutations: {
     ADD_TODO(state, todo) {
-      !state.todos[state.currentPage] && state.todos.push([]); // if no page exists yet => create new empty page 
+      if (!state.todos[state.currentPage]) {
+        state.todos.push([]); // if no page exists yet => create new empty page 
+      }
       state.todos[state.currentPage].push(todo);
     },
     DELETE_TODO(state, indexInList) {
@@ -57,10 +61,10 @@ export default new Vuex.Store({
       state.todos[state.currentPage][indexInList].checked = !state.todos[state.currentPage][indexInList].checked;
     },
     FORWARD_PAGE(state) {
-      state.currentPage++;
+      state.currentPage += 1;
     },
     BACKWARD_PAGE(state) {
-      state.currentPage--;
+      state.currentPage -= 1;
     },
     NEW_PAGE(state) {
       state.currentPage = state.todos.length;

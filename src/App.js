@@ -1,5 +1,6 @@
-import List from './components/List/List.vue';
-import Navigation from './components/Navigation/Navigation.vue';
+import { mapGetters, mapActions } from 'vuex'
+import List from './components/List/List.vue'
+import Navigation from './components/Navigation/Navigation.vue'
 
 export default {
   name: "app",
@@ -13,35 +14,22 @@ export default {
     Navigation
   },
   methods: {
+    ...mapActions(['addToDo']),
     add() {
-      this.$store.dispatch("addToDo", { text: this.message, checked: false });
+      this.addToDo({ text: this.message, checked: false });
     }
   },
   computed: {
-    todos: {
-      get() {
-        return this.$store.getters.todos;
-      }
-    },
+    ...mapGetters(['currentPage', 'lastPage', 'todos']),
     todosOfCurrentPage: {
       get() {
-        return this.$store.getters.todos[this.$store.getters.currentPage];
-      }
-    },
-    lastPage: {
-      get() {
-        return this.$store.getters.lastPage;
-      }
-    },
-    currentPage: {
-      get() {
-        return this.$store.getters.currentPage;
+        return this.todos[this.currentPage];
       }
     },
     displayPage: {
       get() {
-        return this.$store.getters.currentPage + 1;
+        return this.currentPage + 1;
       }
     }
   }
-};
+}
