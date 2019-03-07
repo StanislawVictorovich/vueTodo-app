@@ -14,7 +14,7 @@ export default {
     Navigation
   },
   methods: {
-    ...mapActions(['addToDo']),
+    ...mapActions(['addToDo', 'fillToDoData']),
     add() {
       this.addToDo({ text: this.message, checked: false });
     }
@@ -31,5 +31,8 @@ export default {
         return this.currentPage + 1;
       }
     }
+  },
+  mounted() {
+    this.fillToDoData();
   }
 }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -7,38 +8,7 @@ export default new Vuex.Store({
   state() {
     return {
       currentPage: 0,
-      todos: [
-        [
-          {
-            text: 'some text 1',
-            checked: false
-          },
-          {
-            text: 'some text 2',
-            checked: true
-          }
-        ],
-        [
-          {
-            text: 'some text 3 page 2',
-            checked: true
-          }
-        ],
-        [
-          {
-            text: 'some text dfdsf on page 3',
-            checked: false
-          },
-          {
-            text: 'some text adasadasd on page 3',
-            checked: false
-          },
-          {
-            text: 'some texta on page 3',
-            checked: false
-          }
-        ]
-      ]
+      todos: [[]]
     }
   },
   getters: {
@@ -47,6 +17,20 @@ export default new Vuex.Store({
     currentPage: state => state.currentPage
   },
   mutations: {
+    FILL_TODO_DATA(state) {
+      let pageCounter = 0;
+      axios.get('https://jsonplaceholder.typicode.com/todos/')
+        .then(response => {
+          response.data.map(item => {
+            state.todos[pageCounter].push( { text: item.title, checked: item.completed } );
+            if (item.userId > pageCounter) {
+              state.todos.push([]);
+              pageCounter += 1;
+            }
+          });
+        })
+        .catch(e => console.log(e));
+    },
     ADD_TODO(state, todo) {
       if (!state.todos[state.currentPage]) {
         state.todos.push([]); // if no page exists yet => create new empty page for pushing new element
@@ -70,6 +54,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    fillToDoData({ commit }) {
+      commit('FILL_TODO_DATA');
+    },
     addToDo({ commit }, todo) {
       commit('ADD_TODO', todo);
     },
