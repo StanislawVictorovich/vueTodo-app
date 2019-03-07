@@ -1,7 +1,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: "Navigation",
+  name: 'Navigation',
   methods: {
     ...mapActions(['backwardPage', 'forwardPage', 'newPage'])
   },
