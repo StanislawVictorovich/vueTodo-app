@@ -1,3 +1,2 @@
-<template src="./List.html"></template>
-<style src="./List.scss" lang="scss"></style>
+<template src="./List.pug" lang="pug"></template>
 <script src="./List.js"></script>
