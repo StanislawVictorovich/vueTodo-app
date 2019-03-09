@@ -20,17 +20,16 @@ export default new Vuex.Store({
   },
   mutations: {
     FILL_TODO_DATA(state) {
-      let page = 0, todos = [[]];
+      let page = 0;
       ToDoService.getToDos(data => {
-        todos = data.reduce((array, item) => {
+        state.todos = data.reduce((array, item) => {
           array[page].push({ text: item.title, checked: item.completed });
           if (item.userId > page) {
               array.push([]);
               page += 1;
           }
           return array;
-        }, [[]]); 
-        state.todos = todos;
+        }, [[]]);
       }, error => console.error('ToDo-app: got error: ',error));
     },
     ADD_TODO(state, todo) {

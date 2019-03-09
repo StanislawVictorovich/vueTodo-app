@@ -11,7 +11,8 @@ export default {
       'Septemtember',
       'October',
       'November',
-      'December'], date = new Date();
-    return `Today is ${date.getDay()}'s of ${months[date.getMonth()]}, ${date.getHours()} hours and ${date.getMinutes()} minutes.`
+      'December'
+    ];
+    return `Today is ${value.getDay()}'s of ${months[value.getMonth()]}, ${value.getHours()} hours and ${value.getMinutes()} minutes.`
   }
 }
