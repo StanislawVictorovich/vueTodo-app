@@ -6,36 +6,33 @@
 
 # Simple Multipaged ToDo Application on Vue 2.6.7
 
+<p align="center">
+  <a href="https://github.com/vuejs/vue">
+    <img src="https://img.shields.io/badge/vue-2.6.7-brightgreen.svg" alt="vue">
+  </a>
+</p>
+
+## Preparation
+
+You need to install [node](http://nodejs.org/) and [git](https://git-scm.com/) locally. The project is based on [ES2015+](http://es6.ruanyifeng.com/), [vue](https://cn.vuejs.org/index.html), [vuex](https://vuex.vuejs.org/zh-cn/), [axios](https://github.com/axios/axios).
+
+---
+
 ## Screenshots
 
 <div align="center"> 
   <img src="https://i.ibb.co/wLznXrC/image.png">
 </div>
 
-## Project setup
-```
+## Getting started
+
+```bash
+# clone the project
+git clone https://github.com/StanislawVictorovich/vueTodo-app.git
+
+# install dependency
 npm install
-```
 
-### Compiles and hot-reloads for development
+# develop
+npm run dev
 ```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
