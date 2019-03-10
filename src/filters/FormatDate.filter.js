@@ -13,6 +13,6 @@ export default {
       'November',
       'December'
     ];
-    return `Today is ${value.getDay()}'s of ${months[value.getMonth()]}, ${value.getHours()} hours and ${value.getMinutes()} minutes.`
+    return `Today is ${value.getDate()}'s of ${months[value.getMonth()]}, ${value.getHours()} hours and ${value.getMinutes()} minutes.`
   }
 }
