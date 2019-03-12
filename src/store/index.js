@@ -17,18 +17,8 @@ export default new Vuex.Store({
     currentPage: state => state.currentPage
   },
   mutations: {
-    FILL_TODO_DATA(state) {
-      let page = 0;
-      getToDos().then(response => {
-        state.todos = response.data.reduce((array, item) => {
-          array[page].push({ text: item.title, checked: item.completed });
-          if (item.userId > page) {
-              array.push([]);
-              page += 1;
-          }
-          return array;
-        }, [[]]);
-      }).catch(error => console.error('ToDo-app: got error: ',error));
+    FILL_TODO_DATA(state, todos) {
+      state.todos = todos;
     },
     ADD_TODO(state, todo) {
       if (!state.todos[state.currentPage]) {
@@ -53,8 +43,18 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fillToDoData({ commit }) {
-      commit('FILL_TODO_DATA');
+    fillToDoData ({ commit }) {
+      let page = 0;
+      getToDos().then(response => {
+        commit('FILL_TODO_DATA', response.data.reduce((array, item) => {
+          array[page].push({ text: item.title, checked: item.completed });
+          if (item.userId > page) {
+              array.push([]);
+              page += 1;
+          }
+          return array;
+        }, [[]]));
+      }).catch(error => console.error('ToDo-app: got error: ',error));
     },
     addToDo({ commit }, todo) {
       commit('ADD_TODO', todo);
