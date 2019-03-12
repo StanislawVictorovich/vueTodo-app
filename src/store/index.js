@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { APP_NAME } from '../constants'
 import { getToDos } from '../api'
 
 Vue.use(Vuex);
@@ -43,9 +44,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    fillToDoData ({ commit }) {
+    async fillToDoData ({ commit }) {
       let page = 0;
-      getToDos().then(response => {
+      try {
+        const response = await getToDos();
         commit('FILL_TODO_DATA', response.data.reduce((array, item) => {
           array[page].push({ text: item.title, checked: item.completed });
           if (item.userId > page) {
@@ -54,7 +56,9 @@ export default new Vuex.Store({
           }
           return array;
         }, [[]]));
-      }).catch(error => console.error('ToDo-app: got error: ',error));
+      } catch(e) {
+        console.warn(APP_NAME, e);
+      }
     },
     addToDo({ commit }, todo) {
       commit('ADD_TODO', todo);
