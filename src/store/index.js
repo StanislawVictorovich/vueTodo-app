@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
-import ToDoService from '../services/ToDo.service'
-
+import { getToDos } from '../api'
 
 Vue.use(Vuex);
 
@@ -21,8 +19,8 @@ export default new Vuex.Store({
   mutations: {
     FILL_TODO_DATA(state) {
       let page = 0;
-      ToDoService.getToDos(data => {
-        state.todos = data.reduce((array, item) => {
+      getToDos().then(response => {
+        state.todos = response.data.reduce((array, item) => {
           array[page].push({ text: item.title, checked: item.completed });
           if (item.userId > page) {
               array.push([]);
@@ -30,7 +28,7 @@ export default new Vuex.Store({
           }
           return array;
         }, [[]]);
-      }, error => console.error('ToDo-app: got error: ',error));
+      }).catch(error => console.error('ToDo-app: got error: ',error));
     },
     ADD_TODO(state, todo) {
       if (!state.todos[state.currentPage]) {
